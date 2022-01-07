@@ -51,4 +51,6 @@ mds <- mds[complete.cases(mds),]
 
 tidyds <- mds %>% group_by(Subject) %>% 
   summarise_at(vars(1:ncol(mds)-1), list(name = mean))
-tidyds
+
+
+write.table(tidyds,"tidy.txt",sep="\t",row.names
