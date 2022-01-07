@@ -49,7 +49,7 @@ mds$ActivityName <- activityLabels[mds$Activity]
 
 mds <- mds[complete.cases(mds),]
 
-tidyds <- mds %>% group_by(Subject) %>% 
+tidyds <- mds %>% group_by(Subject, ActivityName) %>% 
   summarise_at(vars(1:ncol(mds)-1), list(name = mean))
 
 
