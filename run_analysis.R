@@ -1,4 +1,5 @@
 library("dplyr")
+library(stringr)
 
 wd <- getwd()
 
@@ -50,8 +51,9 @@ mds$ActivityName <- activityLabels[mds$Activity]
 mds <- mds[complete.cases(mds),]
 
 tidyds <- mds %>% group_by(Subject, ActivityName) %>% 
-  summarise_at(vars(1:ncol(mds)-1), list(name = mean))
+  summarise_at(vars(1:(ncol(mds)-2)), list(name = mean))
 
 head(tidyds)
 
 write.table(tidyds,"tidy.txt",sep="\t",row.names=FALSE)
+
